@@ -69,33 +69,52 @@ sort($expenses);
         }
     </script>
 
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
     <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.tailwindcss.min.css" />
+    <!-- DataTables Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.min.css" />
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-        /* DataTables overrides for Tailwind look */
+        /* Bootstrap resets that conflict with Tailwind — scope to DataTables only */
         .dataTables_wrapper .dataTables_filter input {
-            border: 1px solid #d1d5db; border-radius: .5rem; padding: .4rem .75rem; font-size: .875rem;
-            outline: none; transition: border-color .2s;
+            font-size: .875rem;
         }
-        .dataTables_wrapper .dataTables_filter input:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.15); }
         .dataTables_wrapper .dataTables_length select {
-            border: 1px solid #d1d5db; border-radius: .5rem; padding: .3rem .5rem; font-size: .875rem; outline: none;
+            font-size: .875rem;
         }
-        table.dataTable thead th { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: #6b7280; }
+        table.dataTable thead th {
+            font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: #6b7280;
+        }
         table.dataTable tbody td { font-size: .875rem; vertical-align: middle; }
         table.dataTable tbody tr:hover { background: #f5f3ff !important; }
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background: #4f46e5 !important; color: #fff !important; border-radius: .5rem !important; border: none !important;
+
+        /* Active page button — brand indigo */
+        .dataTables_wrapper .pagination .page-item.active .page-link {
+            background-color: #4f46e5 !important;
+            border-color: #4f46e5 !important;
+            color: #fff !important;
         }
-        .dataTables_wrapper .dataTables_paginate .paginate_button { border-radius: .5rem !important; }
+        .dataTables_wrapper .pagination .page-link {
+            color: #4f46e5;
+            border-radius: .375rem;
+            margin: 0 2px;
+            font-size: .85rem;
+        }
+        .dataTables_wrapper .pagination .page-link:hover {
+            background-color: #eef2ff;
+            border-color: #c7d2fe;
+        }
         .dataTables_wrapper .dataTables_info { font-size: .8rem; color: #9ca3af; }
+
+        /* Prevent Bootstrap from resetting all Tailwind typography */
+        .dt-bootstrap5 { font-family: inherit; }
 
         /* scrollbar */
         ::-webkit-scrollbar{width:6px}
@@ -286,10 +305,14 @@ sort($expenses);
 <!-- ═══════════════════════════════════════════
      SCRIPTS
      ═══════════════════════════════════════════ -->
-<!-- jQuery (DataTables dep) -->
+<!-- 1. jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<!-- DataTables core -->
-<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<!-- 2. Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- 3. DataTables Core JS -->
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<!-- 4. DataTables Bootstrap 5 Integration JS -->
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.min.js"></script>
 
 <script>
 $(function () {

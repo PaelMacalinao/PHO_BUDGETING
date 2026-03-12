@@ -186,25 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .tab-panel.active{display:block}
         @keyframes fadeSlide{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-        /* Floating label helper */
-        .float-group{position:relative}
-        .float-group input:focus~label,
-        .float-group input:not(:placeholder-shown)~label,
-        .float-group textarea:focus~label,
-        .float-group textarea:not(:placeholder-shown)~label,
-        .float-group select:focus~label,
-        .float-group select.has-value~label{
-            transform:translateY(-1.55rem) scale(.85);
-            color:#4f46e5;
-            background:#fff;
-            padding:0 4px;
-        }
-        .float-group label{
-            position:absolute;left:.85rem;top:.7rem;
-            transition:all .2s ease;
-            pointer-events:none;
-            color:#9ca3af;font-size:.875rem;
-        }
+
 
         /* Money input alignment */
         input[type="number"]{-moz-appearance:textfield}
@@ -278,31 +260,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Program/Project/Activity -->
-                <div class="md:col-span-2 float-group">
-                    <input type="text" id="program_project" name="program_project" placeholder=" " required
-                           class="peer w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
-                    <label for="program_project">Program / Project / Activity <span class="text-red-500">*</span></label>
+                <div class="md:col-span-2 mb-3">
+                    <label for="program_project" class="block text-sm font-semibold text-gray-700 mb-1">Program / Project / Activity <span class="text-red-500">*</span></label>
+                    <input type="text" id="program_project" name="program_project" placeholder="Enter program, project, or activity" required
+                           class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
                 </div>
 
                 <!-- Account Code -->
-                <div class="float-group">
-                    <input type="text" id="account_code" name="account_code" placeholder=" " required
-                           class="peer w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
-                    <label for="account_code">Account Code <span class="text-red-500">*</span></label>
+                <div class="mb-3">
+                    <label for="account_code" class="block text-sm font-semibold text-gray-700 mb-1">Account Code <span class="text-red-500">*</span></label>
+                    <input type="text" id="account_code" name="account_code" placeholder="Enter account code" required
+                           class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
                 </div>
 
                 <!-- Account Title -->
-                <div class="float-group">
-                    <input type="text" id="account_title" name="account_title" placeholder=" " required
-                           class="peer w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
-                    <label for="account_title">Account Title <span class="text-red-500">*</span></label>
+                <div class="mb-3">
+                    <label for="account_title" class="block text-sm font-semibold text-gray-700 mb-1">Account Title <span class="text-red-500">*</span></label>
+                    <input type="text" id="account_title" name="account_title" placeholder="Enter account title" required
+                           class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
                 </div>
 
                 <!-- Performance Indicator -->
-                <div class="md:col-span-2 float-group">
-                    <textarea id="performance_indicator" name="performance_indicator" rows="3" placeholder=" " required
-                              class="peer w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition resize-none"></textarea>
-                    <label for="performance_indicator">Performance Indicator <span class="text-red-500">*</span></label>
+                <div class="md:col-span-2 mb-3">
+                    <label for="performance_indicator" class="block text-sm font-semibold text-gray-700 mb-1">Performance Indicator <span class="text-red-500">*</span></label>
+                    <textarea id="performance_indicator" name="performance_indicator" rows="3" placeholder="Describe the performance indicator" required
+                              class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition resize-none"></textarea>
                 </div>
             </div>
         </div>
@@ -411,56 +393,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Unit -->
-                <div class="float-group">
+                <div class="mb-3">
+                    <label for="unit" class="block text-sm font-semibold text-gray-700 mb-1">Unit <span class="text-red-500">*</span></label>
                     <select id="unit" name="unit" required
-                            class="peer w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition appearance-none"
-                            onchange="this.classList.toggle('has-value', this.value !== '')">
+                            class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition">
                         <option value="">— Select Unit —</option>
                         <option value="PHO CLINIC">PHO CLINIC</option>
                         <option value="ADMINISTRATIVE SUPPORT">ADMINISTRATIVE SUPPORT</option>
                         <option value="ORAL HEALTH PROGRAM">ORAL HEALTH PROGRAM</option>
                         <option value="PESU">PESU</option>
                     </select>
-                    <label for="unit">Unit <span class="text-red-500">*</span></label>
                 </div>
 
                 <!-- Expense Class -->
-                <div class="float-group">
+                <div class="mb-3">
+                    <label for="expense_class" class="block text-sm font-semibold text-gray-700 mb-1">MOOE / CO <span class="text-red-500">*</span></label>
                     <select id="expense_class" name="expense_class" required
-                            class="peer w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition appearance-none"
-                            onchange="this.classList.toggle('has-value', this.value !== '')">
+                            class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition">
                         <option value="">— Select Expense Class —</option>
                         <option value="MOOE">MOOE</option>
                         <option value="CAPITAL OUTLAY">CAPITAL OUTLAY</option>
                         <option value="PERSONAL SERVICES">PERSONAL SERVICES</option>
                     </select>
-                    <label for="expense_class">MOOE / CO <span class="text-red-500">*</span></label>
                 </div>
 
                 <!-- Fund Source -->
-                <div class="float-group">
+                <div class="mb-3">
+                    <label for="fund_source" class="block text-sm font-semibold text-gray-700 mb-1">General Fund / Special Project <span class="text-red-500">*</span></label>
                     <select id="fund_source" name="fund_source" required
-                            class="peer w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition appearance-none"
-                            onchange="this.classList.toggle('has-value', this.value !== '')">
+                            class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition">
                         <option value="">— Select Fund Source —</option>
                         <option value="GENERAL FUND">GENERAL FUND</option>
                         <option value="SPECIAL PROJECT">SPECIAL PROJECT</option>
                     </select>
-                    <label for="fund_source">General Fund / Special Project <span class="text-red-500">*</span></label>
                 </div>
 
                 <!-- LBP Code -->
-                <div class="float-group">
-                    <input type="text" id="lbp_code" name="lbp_code" placeholder=" "
-                           class="peer w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
-                    <label for="lbp_code">LBP 4 Code Gen Fund</label>
+                <div class="mb-3">
+                    <label for="lbp_code" class="block text-sm font-semibold text-gray-700 mb-1">LBP 4 Code Gen Fund</label>
+                    <input type="text" id="lbp_code" name="lbp_code" placeholder="Enter LBP 4 code"
+                           class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
                 </div>
 
                 <!-- Justification -->
-                <div class="md:col-span-2 float-group">
-                    <textarea id="justification" name="justification" rows="4" placeholder=" " required
-                              class="peer w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition resize-none"></textarea>
-                    <label for="justification">Justification <span class="text-red-500">*</span></label>
+                <div class="md:col-span-2 mb-3">
+                    <label for="justification" class="block text-sm font-semibold text-gray-700 mb-1">Justification <span class="text-red-500">*</span></label>
+                    <textarea id="justification" name="justification" rows="4" placeholder="Provide justification for this budget proposal" required
+                              class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition resize-none"></textarea>
                 </div>
             </div>
         </div>
