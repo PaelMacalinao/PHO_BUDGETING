@@ -42,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data['total_allocation'] = round($allocTotal, 2);
 
         $sql = "INSERT INTO tbl_budget_proposals
-                (ppa_description, program_id, account_id, fund_source_id, indicator_id, unit_id,
+                (ppa_description, program_id, account_id, fund_source_id, indicator_id,
                  q1_target, q2_target, q3_target, q4_target, target_total,
                  jan_amt, feb_amt, mar_amt, apr_amt, may_amt, jun_amt,
                  jul_amt, aug_amt, sep_amt, oct_amt, nov_amt, dec_amt, total_allocation,
                  justification)
                 VALUES
-                (:ppa_description, :program_id, :account_id, :fund_source_id, :indicator_id, :unit_id,
+                (:ppa_description, :program_id, :account_id, :fund_source_id, :indicator_id,
                  :q1_target, :q2_target, :q3_target, :q4_target, :target_total,
                  :jan_amt, :feb_amt, :mar_amt, :apr_amt, :may_amt, :jun_amt,
                  :jul_amt, :aug_amt, :sep_amt, :oct_amt, :nov_amt, :dec_amt, :total_allocation,
@@ -81,10 +81,9 @@ try {
     $accounts   = $pdo->query("SELECT id, account_code, account_title, expense_class FROM tbl_account_codes ORDER BY account_code")->fetchAll();
     $fundSrcs   = $pdo->query("SELECT id, fund_name FROM tbl_fund_sources ORDER BY fund_name")->fetchAll();
     $indicators = $pdo->query("SELECT id, indicator_description FROM tbl_indicators ORDER BY id")->fetchAll();
-    $units      = $pdo->query("SELECT id, unit_name FROM tbl_units ORDER BY unit_name")->fetchAll();
 } catch (PDOException $e) {
     error_log('DB Error: ' . $e->getMessage());
-    $programs = $accounts = $fundSrcs = $indicators = $units = [];
+    $programs = $accounts = $fundSrcs = $indicators = [];
 }
 
 require_once __DIR__ . '/includes/header.php';
@@ -125,20 +124,11 @@ require_once __DIR__ . '/includes/header.php';
                     class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition resize-none"></textarea>
             </div>
             <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Program (PPA) <span class="text-red-500">*</span></label>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Program / Unit <span class="text-red-500">*</span></label>
                 <select name="program_id" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
                     <option value="">— Select Program —</option>
                     <?php foreach ($programs as $p): ?>
                         <option value="<?= (int)$p['id'] ?>"><?= e($p['program_name']) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Unit <span class="text-red-500">*</span></label>
-                <select name="unit_id" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
-                    <option value="">— Select Unit —</option>
-                    <?php foreach ($units as $u): ?>
-                        <option value="<?= (int)$u['id'] ?>"><?= e($u['unit_name']) ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
