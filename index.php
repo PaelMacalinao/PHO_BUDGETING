@@ -1,7 +1,7 @@
 <?php
 /**
  * PHO Budgeting System — Dashboard & History Records
- * 2026 Conso Proposal V3
+ * 2026 Conso Proposal
  *
  * Tech: PHP 8 + PDO | Tailwind CSS | FontAwesome | DataTables.net | SweetAlert2
  */
@@ -53,7 +53,7 @@ sort($expenses);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard — 2026 Conso Proposal V3</title>
+    <title>Dashboard — 2026 Conso Proposal</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -128,7 +128,7 @@ sort($expenses);
                 <i class="fa-solid fa-building-columns"></i>
             </div>
             <div>
-                <span class="text-lg font-semibold text-white tracking-tight">2026 Conso Proposal V3</span>
+                <span class="text-lg font-semibold text-white tracking-tight">2026 Conso Proposal</span>
                 <span class="hidden sm:inline text-xs text-brand-200 ml-2">Provincial Health Office</span>
             </div>
         </div>

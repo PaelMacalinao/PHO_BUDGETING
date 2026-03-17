@@ -1,7 +1,7 @@
 <?php
 /**
  * PHO Budgeting System — Read-Only Proposal Viewer
- * 2026 Conso Proposal V3
+ * 2026 Conso Proposal
  *
  * Tech: PHP 8 + PDO (prepared statements) | Tailwind CSS | FontAwesome
  */
@@ -64,7 +64,7 @@ function e(?string $v): string
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $row ? 'Proposal #' . (int)$row['id'] : 'Not Found' ?> — 2026 Conso Proposal V3</title>
+    <title><?= $row ? 'Proposal #' . (int)$row['id'] : 'Not Found' ?> — 2026 Conso Proposal</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -101,7 +101,7 @@ function e(?string $v): string
                 <i class="fa-solid fa-building-columns"></i>
             </div>
             <div>
-                <span class="text-lg font-semibold text-gray-800 tracking-tight">2026 Conso Proposal V3</span>
+                <span class="text-lg font-semibold text-gray-800 tracking-tight">2026 Conso Proposal</span>
                 <span class="hidden sm:inline text-xs text-gray-400 ml-2">Provincial Health Office</span>
             </div>
         </div>
