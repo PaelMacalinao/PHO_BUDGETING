@@ -167,7 +167,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             theme: {
                 extend: {
                     colors: {
-                        brand: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' },
+                        brand: {50:'#f0faf3',100:'#d4f0dc',200:'#aae0bc',300:'#72c990',400:'#3fb068',500:'#14864a',600:'#0b4d26',700:'#093f1f',800:'#073218',900:'#052611'},
+                        gold: {50:'#fef9e7',100:'#fdf0c4',200:'#fbe59d',300:'#f9d875',400:'#f9c93e',500:'#f9ba15',600:'#d9a00e',700:'#b3830b'},
                     }
                 }
             }
@@ -181,27 +182,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-        /* Custom transitions for wizard */
+        /* PHO Brand Theme — Provincial Health Office */
         .tab-panel{display:none;animation:fadeSlide .35s ease}
         .tab-panel.active{display:block}
         @keyframes fadeSlide{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-
-
-        /* Money input alignment */
         input[type="number"]{-moz-appearance:textfield}
         input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 
-        /* Step indicator */
+        /* Step indicator — brand green */
         .step-dot{transition:all .3s ease}
-        .step-dot.active{background:#4f46e5;color:#fff;box-shadow:0 0 0 4px rgba(79,70,229,.25)}
-        .step-dot.done{background:#10b981;color:#fff}
+        .step-dot.active{background:#0b4d26;color:#fff;box-shadow:0 0 0 4px rgba(11,77,38,.25)}
+        .step-dot.done{background:#0b4d26;color:#fff}
         .step-line{transition:background .3s ease}
-        .step-line.done{background:#10b981}
+        .step-line.done{background:#0b4d26}
 
-        /* Scrollbar */
         ::-webkit-scrollbar{width:6px}
-        ::-webkit-scrollbar-thumb{background:#c7d2fe;border-radius:4px}
+        ::-webkit-scrollbar-thumb{background:#aae0bc;border-radius:4px}
     </style>
 </head>
 
@@ -210,21 +207,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- ═══════════════════════════════════════════════════════════
      TOP NAVIGATION BAR
      ═══════════════════════════════════════════════════════════ -->
-<nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+<nav class="bg-brand-600 shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <div class="flex items-center gap-3">
-            <div class="bg-brand-600 text-white w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold shadow">
+            <div class="bg-gold-500 text-brand-900 w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold shadow">
                 <i class="fa-solid fa-building-columns"></i>
             </div>
             <div>
-                <span class="text-lg font-semibold text-gray-800 tracking-tight">PHO Budgeting</span>
-                <span class="hidden sm:inline text-xs text-gray-400 ml-2">Provincial Health Office</span>
+                <span class="text-lg font-semibold text-white tracking-tight">PHO Budgeting</span>
+                <span class="hidden sm:inline text-xs text-brand-200 ml-2">Provincial Health Office</span>
             </div>
         </div>
-        <div class="flex items-center gap-4 text-sm text-gray-500">
-            <a href="index.php" class="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-800 font-medium transition"><i class="fa-solid fa-arrow-left text-xs"></i> Dashboard</a>
+        <div class="flex items-center gap-4 text-sm text-brand-100">
+            <a href="index.php" class="inline-flex items-center gap-1.5 text-gold-400 hover:text-white font-medium transition"><i class="fa-solid fa-arrow-left text-xs"></i> Dashboard</a>
             <span class="hidden md:inline"><i class="fa-regular fa-calendar mr-1"></i> FY 2026</span>
-            <span class="bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-user mr-1"></i> Staff</span>
+            <span class="bg-gold-500 text-brand-900 px-3 py-1 rounded-full text-xs font-medium"><i class="fa-solid fa-user mr-1"></i> Staff</span>
         </div>
     </div>
 </nav>
@@ -292,7 +289,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- ─── TAB 2 : Physical Targets ──────────────── -->
         <div class="tab-panel p-6 sm:p-10" data-step="2">
             <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-6">
-                <span class="bg-emerald-100 text-emerald-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm">
+                <span class="bg-brand-100 text-brand-600 w-8 h-8 rounded-lg flex items-center justify-center text-sm">
                     <i class="fa-solid fa-bullseye"></i>
                 </span>
                 Physical Targets
@@ -303,22 +300,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
                     <span class="block text-xs font-medium text-gray-400 mb-2">Q1 Target</span>
                     <input type="number" name="q1_target" min="0" value="0"
-                           class="quarter-input w-full text-center text-lg font-semibold border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition" />
+                           class="quarter-input w-full text-center text-lg font-semibold border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
                 </div>
                 <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
                     <span class="block text-xs font-medium text-gray-400 mb-2">Q2 Target</span>
                     <input type="number" name="q2_target" min="0" value="0"
-                           class="quarter-input w-full text-center text-lg font-semibold border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition" />
+                           class="quarter-input w-full text-center text-lg font-semibold border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
                 </div>
                 <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
                     <span class="block text-xs font-medium text-gray-400 mb-2">Q3 Target</span>
                     <input type="number" name="q3_target" min="0" value="0"
-                           class="quarter-input w-full text-center text-lg font-semibold border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition" />
+                           class="quarter-input w-full text-center text-lg font-semibold border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
                 </div>
                 <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 text-center">
                     <span class="block text-xs font-medium text-gray-400 mb-2">Q4 Target</span>
                     <input type="number" name="q4_target" min="0" value="0"
-                           class="quarter-input w-full text-center text-lg font-semibold border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition" />
+                           class="quarter-input w-full text-center text-lg font-semibold border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
                 </div>
             </div>
 
@@ -340,7 +337,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- ─── TAB 3 : Financial Allocation ──────────── -->
         <div class="tab-panel p-6 sm:p-10" data-step="3">
             <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-6">
-                <span class="bg-amber-100 text-amber-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm">
+                <span class="bg-gold-100 text-gold-600 w-8 h-8 rounded-lg flex items-center justify-center text-sm">
                     <i class="fa-solid fa-coins"></i>
                 </span>
                 Financial Allocation
@@ -361,7 +358,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="relative">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">₱</span>
                         <input type="number" name="<?= htmlspecialchars($key, ENT_QUOTES, 'UTF-8') ?>" min="0" step="0.01" value="0.00"
-                               class="month-input w-full pl-7 pr-2 text-right text-sm font-medium border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition" />
+                               class="month-input w-full pl-7 pr-2 text-right text-sm font-medium border border-gray-300 rounded-lg py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition" />
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -385,7 +382,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- ─── TAB 4 : Classifications ───────────────── -->
         <div class="tab-panel p-6 sm:p-10" data-step="4">
             <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2 mb-6">
-                <span class="bg-violet-100 text-violet-700 w-8 h-8 rounded-lg flex items-center justify-center text-sm">
+                <span class="bg-gold-100 text-gold-600 w-8 h-8 rounded-lg flex items-center justify-center text-sm">
                     <i class="fa-solid fa-tags"></i>
                 </span>
                 Classifications
@@ -454,11 +451,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </button>
             <div class="flex-1"></div>
             <button type="button" id="btnNext"
-                    class="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition shadow-md">
+                    class="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 hover:ring-2 hover:ring-gold-500 transition shadow-md">
                 Next <i class="fa-solid fa-arrow-right text-xs"></i>
             </button>
             <button type="submit" id="btnSubmit"
-                    class="hidden inline-flex items-center gap-2 px-7 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition shadow-md">
+                    class="hidden inline-flex items-center gap-2 px-7 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 hover:ring-2 hover:ring-gold-500 transition shadow-md">
                 <i class="fa-solid fa-paper-plane text-xs"></i> Submit Proposal
             </button>
         </div>
@@ -529,14 +526,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             dot.classList.remove('active', 'done');
             dot.classList.add('border-gray-200', 'bg-white', 'text-gray-400');
-            label.classList.remove('text-brand-600', 'text-emerald-600');
+            label.classList.remove('text-brand-600', 'text-brand-500');
             label.classList.add('text-gray-400');
 
             if (i < currentStep) {
                 dot.classList.remove('border-gray-200', 'bg-white', 'text-gray-400');
                 dot.classList.add('done');
                 label.classList.remove('text-gray-400');
-                label.classList.add('text-emerald-600');
+                label.classList.add('text-brand-500');
             } else if (i === currentStep) {
                 dot.classList.remove('border-gray-200', 'bg-white', 'text-gray-400');
                 dot.classList.add('active');
@@ -588,7 +585,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 icon: 'warning',
                 title: 'Missing Information',
                 text: 'Please fill in all required fields before proceeding.',
-                confirmButtonColor: '#4f46e5',
+                confirmButtonColor: '#0b4d26',
             });
         }
         return valid;
@@ -633,7 +630,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             showCancelButton: true,
             confirmButtonText: '<i class="fa-solid fa-paper-plane"></i> Yes, Submit',
             cancelButtonText: 'Cancel',
-            confirmButtonColor: '#059669',
+            confirmButtonColor: '#0b4d26',
             cancelButtonColor: '#6b7280',
             reverseButtons: true,
         });
@@ -653,7 +650,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     icon: 'success',
                     title: 'Proposal Saved!',
                     html: `Your budget proposal has been recorded.<br><small class="text-gray-400">Reference ID: <strong>#${json.id}</strong></small>`,
-                    confirmButtonColor: '#059669',
+                    confirmButtonColor: '#0b4d26',
                 });
                 window.location.href = 'index.php';
             } else {

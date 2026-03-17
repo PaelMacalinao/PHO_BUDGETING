@@ -62,7 +62,8 @@ sort($expenses);
             theme: {
                 extend: {
                     colors: {
-                        brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+                        brand: {50:'#f0faf3',100:'#d4f0dc',200:'#aae0bc',300:'#72c990',400:'#3fb068',500:'#14864a',600:'#0b4d26',700:'#093f1f',800:'#073218',900:'#052611'},
+                        gold: {50:'#fef9e7',100:'#fdf0c4',200:'#fbe59d',300:'#f9d875',400:'#f9c93e',500:'#f9ba15',600:'#d9a00e',700:'#b3830b'},
                     }
                 }
             }
@@ -82,43 +83,36 @@ sort($expenses);
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-        /* Bootstrap resets that conflict with Tailwind — scope to DataTables only */
-        .dataTables_wrapper .dataTables_filter input {
-            font-size: .875rem;
-        }
-        .dataTables_wrapper .dataTables_length select {
-            font-size: .875rem;
-        }
+        /* PHO Brand Theme — Provincial Health Office */
+        .bg-custom-green { background-color: #0b4d26; }
+
+        .dataTables_wrapper .dataTables_filter input { font-size: .875rem; }
+        .dataTables_wrapper .dataTables_length select { font-size: .875rem; }
+
         table.dataTable thead th {
-            font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: #6b7280;
+            font-size: .75rem; text-transform: uppercase; letter-spacing: .05em;
+            color: #fff !important; background: #0b4d26 !important;
+            border-bottom: 2px solid #093f1f !important;
+            padding: .85rem .5rem;
         }
         table.dataTable tbody td { font-size: .875rem; vertical-align: middle; }
-        table.dataTable tbody tr:hover { background: #f5f3ff !important; }
+        table.dataTable tbody tr:hover { background: #f0faf3 !important; }
 
-        /* Active page button — brand indigo */
         .dataTables_wrapper .pagination .page-item.active .page-link {
-            background-color: #4f46e5 !important;
-            border-color: #4f46e5 !important;
-            color: #fff !important;
+            background-color: #0b4d26 !important; border-color: #0b4d26 !important; color: #fff !important;
         }
         .dataTables_wrapper .pagination .page-link {
-            color: #4f46e5;
-            border-radius: .375rem;
-            margin: 0 2px;
-            font-size: .85rem;
+            color: #0b4d26; border-radius: .375rem; margin: 0 2px; font-size: .85rem;
         }
         .dataTables_wrapper .pagination .page-link:hover {
-            background-color: #eef2ff;
-            border-color: #c7d2fe;
+            background-color: #f0faf3; border-color: #aae0bc;
         }
         .dataTables_wrapper .dataTables_info { font-size: .8rem; color: #9ca3af; }
 
-        /* Prevent Bootstrap from resetting all Tailwind typography */
         .dt-bootstrap5 { font-family: inherit; }
 
-        /* scrollbar */
-        ::-webkit-scrollbar{width:6px}
-        ::-webkit-scrollbar-thumb{background:#c7d2fe;border-radius:4px}
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #aae0bc; border-radius: 4px; }
     </style>
 </head>
 
@@ -127,20 +121,20 @@ sort($expenses);
 <!-- ═══════════════════════════════════════════
      TOP NAV
      ═══════════════════════════════════════════ -->
-<nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+<nav class="bg-brand-600 shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <div class="flex items-center gap-3">
-            <div class="bg-brand-600 text-white w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold shadow">
+            <div class="bg-gold-500 text-brand-900 w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold shadow">
                 <i class="fa-solid fa-building-columns"></i>
             </div>
             <div>
-                <span class="text-lg font-semibold text-gray-800 tracking-tight">2026 Conso Proposal V3</span>
-                <span class="hidden sm:inline text-xs text-gray-400 ml-2">Provincial Health Office</span>
+                <span class="text-lg font-semibold text-white tracking-tight">2026 Conso Proposal V3</span>
+                <span class="hidden sm:inline text-xs text-brand-200 ml-2">Provincial Health Office</span>
             </div>
         </div>
-        <div class="flex items-center gap-4 text-sm text-gray-500">
+        <div class="flex items-center gap-4 text-sm text-brand-100">
             <span class="hidden md:inline"><i class="fa-regular fa-calendar mr-1"></i> FY 2026</span>
-            <span class="bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-xs font-medium">
+            <span class="bg-gold-500 text-brand-900 px-3 py-1 rounded-full text-xs font-medium">
                 <i class="fa-solid fa-user mr-1"></i> Staff
             </span>
         </div>
@@ -159,7 +153,7 @@ sort($expenses);
             <p class="text-sm text-gray-500 mt-0.5">Manage and review all submitted proposals for FY 2026.</p>
         </div>
         <a href="create.php"
-           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 transition shadow-md whitespace-nowrap">
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 hover:ring-2 hover:ring-gold-500 transition shadow-md whitespace-nowrap">
             <i class="fa-solid fa-plus text-xs"></i> Create New Budget Proposal
         </a>
     </div>
@@ -176,7 +170,7 @@ sort($expenses);
             </div>
         </div>
         <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5 flex items-center gap-4">
-            <div class="bg-emerald-100 text-emerald-600 w-11 h-11 rounded-lg flex items-center justify-center">
+            <div class="bg-gold-100 text-gold-600 w-11 h-11 rounded-lg flex items-center justify-center">
                 <i class="fa-solid fa-bullseye text-lg"></i>
             </div>
             <div>
@@ -185,7 +179,7 @@ sort($expenses);
             </div>
         </div>
         <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5 flex items-center gap-4">
-            <div class="bg-amber-100 text-amber-600 w-11 h-11 rounded-lg flex items-center justify-center">
+            <div class="bg-brand-100 text-brand-600 w-11 h-11 rounded-lg flex items-center justify-center">
                 <i class="fa-solid fa-peso-sign text-lg"></i>
             </div>
             <div>
@@ -194,7 +188,7 @@ sort($expenses);
             </div>
         </div>
         <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5 flex items-center gap-4">
-            <div class="bg-violet-100 text-violet-600 w-11 h-11 rounded-lg flex items-center justify-center">
+            <div class="bg-gold-100 text-gold-600 w-11 h-11 rounded-lg flex items-center justify-center">
                 <i class="fa-solid fa-building text-lg"></i>
             </div>
             <div>
@@ -240,7 +234,7 @@ sort($expenses);
         <div class="px-6 pb-6 pt-2 overflow-x-auto">
             <table id="proposalsTable" class="w-full text-left">
                 <thead>
-                    <tr class="border-b border-gray-200">
+                    <tr class="bg-custom-green text-white">
                         <th class="py-3 px-2">ID</th>
                         <th class="py-3 px-2">Program / Project / Activity</th>
                         <th class="py-3 px-2">Unit</th>
@@ -288,7 +282,7 @@ sort($expenses);
                 It looks like no budget proposals have been submitted for FY 2026. Get started by creating your first proposal.
             </p>
             <a href="create.php"
-               class="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 transition shadow-md">
+               class="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 hover:ring-2 hover:ring-gold-500 transition shadow-md">
                 <i class="fa-solid fa-plus text-xs"></i> Create First Proposal
             </a>
             <?php if (isset($dbError)): ?>
